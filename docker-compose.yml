@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: incar-web
+    user: root
+    ports:
+      - "5000:5000"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - huggingface_cache:/root/.cache/huggingface
+    environment:
+      - FLASK_APP=/app/incar/interface.py
+      - FLASK_ENV=development
+      - PYTHONPATH=/app
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface
+      - HF_HOME=/root/.cache/huggingface
+    restart: "no"
+    init: true
+    privileged: true
+    command: >
+      sh -c "mkdir -p /root/.cache/huggingface &&
+             chmod -R 777 /root/.cache/huggingface &&
+             pip install --no-cache-dir -r requirements.txt &&
+             pip install -e . &&
+             python -m incar.interface"
+
+volumes:
+  huggingface_cache:

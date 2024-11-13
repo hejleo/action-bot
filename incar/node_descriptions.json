@@ -1,0 +1,456 @@
+{
+    "OnVariableChange": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Handles VariableChange events in the application",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "variablechange"
+        ]
+    },
+    "OnKeyRelease": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Triggers when a keyboard key is released",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "keyboard_interaction"
+        ]
+    },
+    "OnKeyPress": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Triggers when a keyboard key is pressd",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "keyboard_interaction"
+        ]
+    },
+    "OnClick": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Handles Click events in the application",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "click"
+        ]
+    },
+    "OnWindowResize": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Handles WindowResize events in the application",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "windowresize"
+        ]
+    },
+    "OnMouseEnter": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "An Event Listener Node that triggers when a mouse enter action occurs",
+        "scope": [
+            "Scene",
+            "Prefab"
+        ],
+        "triggers": [
+            "mouse_interaction"
+        ]
+    },
+    "OnMouseLeave": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "An Event Listener Node that triggers when a mouse leave action occurs",
+        "scope": [
+            "Scene",
+            "Prefab"
+        ],
+        "triggers": [
+            "mouse_interaction"
+        ]
+    },
+    "OnTimer": {
+        "type": "event",
+        "category": "Event Nodes",
+        "description": "Handles Timer events in the application",
+        "scope": [
+            "Global"
+        ],
+        "triggers": [
+            "timer"
+        ]
+    },
+    "Console": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a console operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "Alert": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a alert operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "Log": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a log operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "Assign": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a assign operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "SendRequest": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a sendrequest operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": true
+    },
+    "Navigate": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a navigate operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "Save": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a save operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": true
+    },
+    "Delete": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a delete operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": true
+    },
+    "PlaySound": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a playsound operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "PauseSound": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a pausesound operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "StopSound": {
+        "type": "action",
+        "category": "Action Nodes",
+        "description": "Performs a stopsound operation in the application",
+        "input_types": [
+            "any"
+        ],
+        "output_types": [
+            "boolean"
+        ],
+        "async": false
+    },
+    "Branch": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs branch operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Map": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs map operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Filter": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs filter operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Reduce": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs reduce operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Sort": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs sort operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "GroupBy": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs groupby operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Merge": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs merge operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Split": {
+        "type": "transformation",
+        "category": "Transformation Nodes",
+        "description": "Performs split operation on input data",
+        "input_types": [
+            "array",
+            "object"
+        ],
+        "output_types": [
+            "array",
+            "object"
+        ],
+        "functional": true
+    },
+    "Show": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through show operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "Hide": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through hide operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "Update": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through update operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "DisplayModal": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through displaymodal operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "CloseModal": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through closemodal operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "Highlight": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through highlight operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "Tooltip": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through tooltip operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "RenderChart": {
+        "type": "display",
+        "category": "Display Nodes",
+        "description": "Controls UI element visibility or updates through renderchart operation",
+        "affects_ui": true,
+        "scope": [
+            "Scene"
+        ],
+        "async": false
+    },
+    "FetchData": {
+        "type": "data",
+        "category": "Data Nodes",
+        "description": "Performs fetch operation on data storage",
+        "affects_storage": true,
+        "async": true,
+        "data_persistence": true
+    },
+    "StoreData": {
+        "type": "data",
+        "category": "Data Nodes",
+        "description": "Performs store operation on data storage",
+        "affects_storage": true,
+        "async": true,
+        "data_persistence": true
+    },
+    "UpdateData": {
+        "type": "data",
+        "category": "Data Nodes",
+        "description": "Performs update operation on data storage",
+        "affects_storage": true,
+        "async": true,
+        "data_persistence": true
+    },
+    "DeleteData": {
+        "type": "data",
+        "category": "Data Nodes",
+        "description": "Performs delete operation on data storage",
+        "affects_storage": true,
+        "async": true,
+        "data_persistence": true
+    },
+    "CacheData": {
+        "type": "data",
+        "category": "Data Nodes",
+        "description": "Performs cache operation on data storage",
+        "affects_storage": true,
+        "async": true,
+        "data_persistence": true
+    }
+}
