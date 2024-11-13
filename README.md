@@ -49,7 +49,7 @@ If you encounter issues:
 
 
 
-# Action Arranger Documentation
+# Action Arranger Documentation and Improvements
 
 ## Overview
 The ActionArranger is a dual-model NLP system designed to interpret natural language commands and match them to appropriate node actions in a visual programming environment. It employs two distinct models for different aspects of text processing:
