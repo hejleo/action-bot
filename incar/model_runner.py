@@ -6,10 +6,20 @@ import json
 import os
 
 class ActionArranger:
+    """
+    A class that handles natural language processing of user prompts and matches them to appropriate nodes.
+    Uses T5 transformer model for text processing and sentence transformers for similarity matching.
+    """
+    
     def __init__(self):
+        """
+        Initialize the ActionArranger with necessary ML models and configurations.
+        Sets up T5 model for text processing and SentenceTransformer for similarity matching.
+        Handles device selection (MPS, CUDA, or CPU) and loads node definitions.
+        """
         try:
             # Using FLAN-T5-small model for lighter resource usage
-            self.model_name = "google/flan-t5-xxl" # Changed to small version for faster inference
+            self.model_name = "google/flan-t5-xxl" # Changed to small google/flan-t5-small for faster inference and prototyping
             self.tokenizer = AutoTokenizer.from_pretrained(
                 self.model_name,
                 cache_dir="/root/.cache/huggingface"
@@ -63,7 +73,12 @@ class ActionArranger:
             raise
 
     def load_node_definitions(self):
-        """Load node definitions from JSON file"""
+        """
+        Load node definitions from a JSON file containing node descriptions and metadata.
+        
+        Returns:
+            dict: Dictionary containing node definitions, or empty dict if loading fails
+        """
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
             json_path = os.path.join(current_dir, 'node_descriptions.json')
@@ -80,6 +95,16 @@ class ActionArranger:
             return {}
 
     def rearrange_actions(self, prompt: str, max_length: int = None) -> str:
+        """
+        Process a natural language prompt to extract and rearrange actions in logical order.
+        
+        Args:
+            prompt (str): The input text to process
+            max_length (int, optional): Maximum length of generated output
+            
+        Returns:
+            str: Comma-separated string of rearranged actions
+        """
         if max_length is None:
             max_length = len(prompt) + 90
 
@@ -125,6 +150,16 @@ class ActionArranger:
             raise
 
     def calculate_similarity(self, text1: str, text2: str) -> float:
+        """
+        Calculate semantic similarity between two text strings using sentence transformers.
+        
+        Args:
+            text1 (str): First text for comparison
+            text2 (str): Second text for comparison
+            
+        Returns:
+            float: Similarity score between 0 and 1
+        """
         # Ensure inputs are strings and handle empty/None values
         text1 = str(text1) if text1 else ""
         text2 = str(text2) if text2 else ""
@@ -158,74 +193,17 @@ class ActionArranger:
         print("=== End Similarity Calculation ===\n")
         return similarity.item()
 
-    def extract_actions_from_prompt(self, prompt: str) -> list:
-        rearranged = self.rearrange_actions(prompt)
-        
-        # Split by commas and clean each action, filtering out empty strings
-        actions = []
-        for action in rearranged.split(","):
-            cleaned = action.strip()
-            if cleaned and len(cleaned) > 1:  # Ensure action is more than one character
-                actions.append(cleaned)
-        
-        print(f"\n=== Extracted Actions ===")
-        print(f"Actions list: {actions}")
-        
-        return actions
-
-    def find_matching_nodes(self, prompt_text: str, node_categories: dict = None) -> list:
-        if node_categories is None:
-            node_categories = self.node_categories.copy()
-
-        def find_closest_node(action_group, all_available_nodes):
-            action_group = str(action_group).strip()
-            if not action_group or len(action_group) <= 1:
-                print(f"Skipping invalid action group: '{action_group}' (length: {len(action_group)})")
-                return None
-                
-            print(f"\n=== Finding closest node for action group ===")
-            print(f"Action group: '{action_group}' (length: {len(action_group)})")
-            max_similarity = -1
-            closest_node = None
-            
-            for category, nodes in all_available_nodes.items():
-                print(f"\nChecking category: {category}")
-                for node in nodes:
-                    node = str(node).strip()
-                    if len(node) <= 1:
-                        print(f"Skipping invalid node: '{node}' (length: {len(node)})")
-                        continue
-                    print("Comparing:", action_group, node)
-                    similarity = self.calculate_similarity(action_group, node)
-                    if similarity > max_similarity:
-                        max_similarity = similarity
-                        closest_node = node
-                        print(f"New best match: '{node}' (similarity: {similarity:.4f})")
-            
-            return closest_node if max_similarity > 0.3 else None
-
-        print(f"\n=== Finding Matching Nodes ===")
-        print(f"Input prompt: {prompt_text}")
-        
-        action_groups = self.extract_actions_from_prompt(prompt_text)
-        print(f"Extracted action groups: {action_groups}")  # Debug print
-        
-        available_nodes = {category: set(nodes) for category, nodes in node_categories.items()}
-        matched_nodes = []
-
-        for action_group in action_groups:
-            if len(action_group) > 1:  # Only process multi-character actions
-                closest_node = find_closest_node(action_group, available_nodes)
-                if closest_node:
-                    matched_nodes.append(closest_node)
-                    for nodes in available_nodes.values():
-                        if closest_node in nodes:
-                            nodes.remove(closest_node)
-                    print(f"Matched '{action_group}' to node: {closest_node}")
-
-        return matched_nodes
 
     def find_affine_nodes(self, actions):
+        """
+        Find nodes that are semantically similar to given actions and generate their descriptions.
+        
+        Args:
+            actions (list): List of action phrases to match
+            
+        Returns:
+            tuple: (list of matching node names, list of node descriptions with HTML formatting)
+        """
         affine_nodes = []
         node_descriptions = []
         
@@ -282,5 +260,13 @@ class ActionArranger:
         return affine_nodes, node_descriptions
 
     def __call__(self, prompt: str) -> list:
-
+        """
+        Make the class callable. Process a prompt and return matching nodes.
+        
+        Args:
+            prompt (str): Input text to process
+            
+        Returns:
+            list: List of matching nodes
+        """
         return []
