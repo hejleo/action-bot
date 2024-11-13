@@ -10,18 +10,24 @@ This repository contains the Incari application setup using Docker Compose.
 
 ## Running the Application
 
-1. Start the application:
+1. Build the Docker image:
+```bash
+docker build .
+```
+This command builds the Docker image based on the Dockerfile in the current directory.
+
+2. Start the application:
 ```bash
 docker-compose up
 ```
-This command will build and start all services. You'll see the logs in your terminal.
+This command will start all services. You'll see the logs in your terminal.
 
-2. Open your web browser and navigate to:
+3. Open your web browser and navigate to:
 ```
 http://localhost:5000
 ```
 
-3. To stop the application, press `Ctrl+C` in the terminal or run:
+4. To stop the application, press `Ctrl+C` in the terminal or run:
 ```bash
 docker-compose down
 ```
@@ -39,3 +45,4 @@ If you encounter issues:
 1. Make sure port 5000 is available
 2. Verify Docker daemon is running
 3. Check the logs for error messages
+4. Try rebuilding the image if you encounter build issues
