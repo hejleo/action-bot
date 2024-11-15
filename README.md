@@ -1,6 +1,6 @@
-# Incari
+# Usage instruction
 
-This repository contains the Incari application setup using Docker Compose.
+This repository contains the application setup using Docker Compose.
 
 ## Prerequisites
 
@@ -67,7 +67,7 @@ The ActionArranger is a dual-model NLP system designed to interpret natural lang
 
 ### Model Roles
 
-#### FLAN-T5-XXL Model
+#### FLAN-T5-XXL Model 
 - Primary text understanding and action extraction
 - Handles temporal and logical ordering of actions
 - **Current Limitations**: 
@@ -84,6 +84,8 @@ The ActionArranger is a dual-model NLP system designed to interpret natural lang
   - Sufficient for limited-scope matching
 
 ## Future Improvements
+
+Currently the inference is very slow as my setup uses M2 chip and not A100 GPUs.
 
 ### Model Optimization
 - Consider replacing FLAN-T5-XXL with a more focused model
