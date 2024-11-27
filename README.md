@@ -2,6 +2,7 @@
 
 This repository contains the application setup using Docker Compose.
 
+
 ## Prerequisites
 
 - Docker Engine installed
@@ -52,7 +53,7 @@ If you encounter issues:
 # Action Arranger Documentation and Improvements
 
 ## Overview
-The ActionArranger is a dual-model NLP system designed to interpret natural language commands and match them to appropriate node actions in a visual programming environment. It employs two distinct models for different aspects of text processing:
+The ActionArranger is a dual-model NLP system designed to interpret natural language commands and match them to appropriate node actions in a visual programming environment (Time for development ~8h). . It employs two distinct models for different aspects of text processing:
 
 1. **FLAN-T5-XXL** - Primary language understanding model
 2. **MiniLM-L12** - Lightweight semantic similarity model
